@@ -1,18 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorLightBlue"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:padding="10dp"
     tools:context="com.mahbub.weatherapp.currentweather.WeatherActivity">
-
     <TextView
+        android:id="@+id/tv_city_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="22sp"
+        android:layout_marginBottom="10dp"
+        android:hint="London,UK"
+        />
+    <ImageView
+        android:id="@+id/iv_weather_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_city_name"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginBottom="10dp"
+        />
+    <TextView
+        android:id="@+id/tv_temperature"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_weather_icon"
+        android:layout_centerHorizontal="true"
+        android:textSize="42sp"
+        android:layout_marginBottom="5dp"
+        android:hint="30° C"
+        />
+    <TextView
+        android:id="@+id/tv_description"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_temperature"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:hint="Light Rain"
+        />
+    <TextView
+        android:id="@+id/tv_last_update_time"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_description"
+        android:layout_centerHorizontal="true"
+        android:textSize="22sp"
+        android:layout_marginBottom="130dp"
+        android:hint="18 March 2018"
+        />
+    <TextView
+        android:id="@+id/tv_min_temperature"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_last_update_time"
+        android:textSize="20sp"
+        android:hint="min :30° C"
+        android:layout_marginHorizontal="60dp"
+        />
+    <TextView
+    android:id="@+id/tv_max_temperature"
+    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/tv_last_update_time"
+    android:textSize="20sp"
+    android:hint="min :30° C"
+    android:layout_toRightOf="@id/tv_min_temperature"
+    />
+    <TextView
+        android:id="@+id/tv_pressure"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_max_temperature"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:hint="pressure :30° C"
 
-</android.support.constraint.ConstraintLayout>
+        />
+
+    <TextView
+        android:id="@+id/tv_humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_pressure"
+        android:layout_below="@+id/tv_pressure"
+        android:hint="humidity :30° C"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="20sp" />
+
+
+
+</RelativeLayout>
