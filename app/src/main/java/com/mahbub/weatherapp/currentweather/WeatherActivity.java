@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.net.HttpURLConnection;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.util.Date;
 
 import data.JSONWeatherParser;
 import data.WeatherHttpConnection;
@@ -65,10 +68,18 @@ public class WeatherActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Weather weather) {
             super.onPostExecute(weather);
+
+            // initialize date format here
+            DateFormat dateFormat = DateFormat.getTimeInstance();
+            String lastUpdate = dateFormat.format(new Date(weather.place.getLastUpdate()));
+            // initialize decimal format here
+            DecimalFormat decimalFormat = new DecimalFormat("#.#");
+            String temp = dateFormat.format(weather.currentCondition.getTemperature());
+
             mCityNameTV.setText(weather.place.getCity()+","+weather.place.getCountry());
-            mTemperatureTV.setText(weather.currentCondition.getTemperature()+" C");
-            mDescriptionTV.setText(weather.currentCondition.getDescription());
-            mLastUpdateTV.setText("Update"+weather.place.getLastUpdate());
+            mTemperatureTV.setText(temp+" C");
+            mDescriptionTV.setText(weather.currentCondition.getCondition()+" ("+weather.currentCondition.getDescription()+")");
+            mLastUpdateTV.setText("Update :"+lastUpdate);
             mMinTempTV.setText("Min:"+weather.currentCondition.getTempMin()+" C");
             mMaxTempTV.setText("Max:"+weather.currentCondition.getTempMax()+" C");
             mPressureTV.setText("Pressure:"+weather.currentCondition.getPressure()+"hPa");
