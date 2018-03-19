@@ -12,8 +12,8 @@ public class CurrentCondition {
     private double temperature;
     private float pressure;
     private float humidity;
-    private float temp_min;
-    private float temp_max;
+    private float tempMin;
+    private float tempMax;
 
 
     public int getWeatherId() {
@@ -72,19 +72,19 @@ public class CurrentCondition {
         this.humidity = humidity;
     }
 
-    public float getTemp_min() {
-        return temp_min;
+    public float getTempMin() {
+        return tempMin;
     }
 
-    public void setTemp_min(float temp_min) {
-        this.temp_min = temp_min;
+    public void setTempMin(float tempMin) {
+        this.tempMin = tempMin;
     }
 
-    public float getTemp_max() {
-        return temp_max;
+    public float getTempMax() {
+        return tempMax;
     }
 
-    public void setTemp_max(float temp_max) {
-        this.temp_max = temp_max;
+    public void setTempMax(float tempMax) {
+        this.tempMax = tempMax;
     }
 }
