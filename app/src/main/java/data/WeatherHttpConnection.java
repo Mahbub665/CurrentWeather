@@ -21,7 +21,7 @@ public class WeatherHttpConnection {
         InputStream inputStream = null;
 
         try{
-            urlConnection = (HttpURLConnection)(new URL(Utils.BASE_URL + place).openConnection());
+            urlConnection = (HttpURLConnection)(new URL(Utils.BASE_URL + place+Utils.UNITS_URL+Utils.APPID)).openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
@@ -31,7 +31,7 @@ public class WeatherHttpConnection {
             StringBuffer stringBuffer = new StringBuffer();
             inputStream = urlConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            String line = null;
+            String line = "";
             while ((line = bufferedReader.readLine())!=null){
                 stringBuffer.append(line + "/r/n");
             }

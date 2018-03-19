@@ -13,13 +13,15 @@ import util.Utils;
  */
 
 public class JSONWeatherParser {
+
     public static Weather getWeather(String data){
         Weather weather = new Weather();
+        JSONObject jsonObject = null;
 
         //create JSONObject form data
 
         try {
-            JSONObject jsonObject = new JSONObject(data);
+            jsonObject = new JSONObject(data);
 
             Place place = new Place();
             // get data from coord object

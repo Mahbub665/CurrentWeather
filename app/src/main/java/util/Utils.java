@@ -11,7 +11,9 @@ import java.io.IOException;
 
 public class Utils {
 
-    public static final String BASE_URL = "https://openweathermap.org/data/2.5/weather?q=";
+    public static final String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
+    public static final String APPID = "&appid=9a36da9b098df077d94ed3f341eaac4f";
+    public static final String UNITS_URL = "&units=metric";
     public static final String IMAGE_ICON_URL = "https://openweathermap.org/img/w/";
 
     // to return json object
