@@ -1,10 +1,13 @@
 package com.mahbub.weatherapp.currentweather;
 
+import android.app.ActionBar;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.net.HttpURLConnection;
@@ -60,7 +63,7 @@ public class WeatherActivity extends AppCompatActivity {
             String data = ((new WeatherHttpConnection()).getWeatherData(strings[0]));
             mWeather = JSONWeatherParser.getWeather(data);
 
-            Log.v("Data: ",mWeather.currentCondition.getDescription());
+
 
             return mWeather;
         }
@@ -72,18 +75,52 @@ public class WeatherActivity extends AppCompatActivity {
             // initialize date format here
             DateFormat dateFormat = DateFormat.getTimeInstance();
             String lastUpdate = dateFormat.format(new Date(weather.place.getLastUpdate()));
-            // initialize decimal format here
-            DecimalFormat decimalFormat = new DecimalFormat("#.#");
-            String temp = dateFormat.format(weather.currentCondition.getTemperature());
+
 
             mCityNameTV.setText(weather.place.getCity()+","+weather.place.getCountry());
-            mTemperatureTV.setText(temp+" C");
+            mTemperatureTV.setText(weather.currentCondition.getTemp()+"° C");
             mDescriptionTV.setText(weather.currentCondition.getCondition()+" ("+weather.currentCondition.getDescription()+")");
-            mLastUpdateTV.setText("Update :"+lastUpdate);
-            mMinTempTV.setText("Min:"+weather.currentCondition.getTempMin()+" C");
-            mMaxTempTV.setText("Max:"+weather.currentCondition.getTempMax()+" C");
-            mPressureTV.setText("Pressure:"+weather.currentCondition.getPressure()+"hPa");
-            mHumidityTV.setText("Humidity"+weather.currentCondition.getHumidity()+"%");
+            mLastUpdateTV.setText("Last Update :"+lastUpdate);
+            mMinTempTV.setText("Min :"+weather.currentCondition.getTempMin()+"° C");
+            mMaxTempTV.setText("Max :"+weather.currentCondition.getTempMax()+"° C");
+            mPressureTV.setText("Pressure: "+weather.currentCondition.getPressure()+" hPa");
+            mHumidityTV.setText("Humidity: "+weather.currentCondition.getHumidity()+" %");
+
+           String imgName = weather.currentCondition.getIcon();
+            if (imgName.equals("01d")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._01d));
+            }else if (imgName.equals("01n")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._01n));
+            }else if (imgName.equals("02d")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._02d));
+            }else if (imgName.equals("02n")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._02n));
+            }else if (imgName.equals("03d")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._03d));
+            }else if (imgName.equals("03n")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._03n));
+            }else if (imgName.equals("04d")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._04d));
+            }else if (imgName.equals("04n")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._04n));
+            }else if (imgName.equals("09d")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._09d));
+            }else if (imgName.equals("09n")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._09n));
+            }else if (imgName.equals("11d")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._11d));
+            }else if (imgName.equals("11n")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._11n));
+            }else if (imgName.equals("13d")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._13d));
+            }else if (imgName.equals("13n")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._13n));
+            }else if (imgName.equals("50d")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._50d));
+            }else if (imgName.equals("50n")){
+                mWeatherIcon.setImageDrawable(getResources().getDrawable(R.drawable._50n));
+            }
+
 
         }
     }

@@ -35,7 +35,7 @@ public class Utils {
 
     // to return double data
     public static double getDouble(String tagName, JSONObject jsonObject) throws JSONException {
-        return (float)jsonObject.getDouble(tagName);
+        return (double) jsonObject.getDouble(tagName);
     }
 
     // to return int data
