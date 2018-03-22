@@ -1,13 +1,18 @@
 package com.mahbub.weatherapp.currentweather;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -51,7 +56,8 @@ public class WeatherActivity extends AppCompatActivity {
         mHumidityTV =(TextView)findViewById(R.id.tv_humidity);
         mWeatherIcon=(ImageView)findViewById(R.id.iv_weather_icon);
 
-        getRenderWeatherData("Dhaka,bd");
+        CityPreference cityPreference = new CityPreference(WeatherActivity.this);
+        getRenderWeatherData(cityPreference.getCity());
 
     }
 
@@ -139,9 +145,31 @@ public class WeatherActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if(itemId == R.id.menu_change_city){
-            Toast.makeText(this,"working correctly",Toast.LENGTH_SHORT).show();
+            showInputDialog();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showInputDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Change City");
+
+        final EditText inputText = new EditText(this);
+        inputText.setInputType(InputType.TYPE_CLASS_TEXT);
+        inputText.setHint("portland,US");
+
+        builder.setView(inputText);
+        builder.setPositiveButton("submit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                CityPreference cityPreference = new CityPreference(WeatherActivity.this);
+                cityPreference.setSity(inputText.getText().toString());
+
+                String city = cityPreference.getCity();
+                getRenderWeatherData(city);
+            }
+        });
+        builder.show();
     }
 }
