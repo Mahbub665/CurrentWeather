@@ -6,9 +6,12 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.net.HttpURLConnection;
 import java.text.DateFormat;
@@ -48,7 +51,7 @@ public class WeatherActivity extends AppCompatActivity {
         mHumidityTV =(TextView)findViewById(R.id.tv_humidity);
         mWeatherIcon=(ImageView)findViewById(R.id.iv_weather_icon);
 
-        getRenderWeatherData("Moscow,RU");
+        getRenderWeatherData("Dhaka,bd");
 
     }
 
@@ -81,8 +84,8 @@ public class WeatherActivity extends AppCompatActivity {
             mTemperatureTV.setText(weather.currentCondition.getTemp()+"° C");
             mDescriptionTV.setText(weather.currentCondition.getCondition()+" ("+weather.currentCondition.getDescription()+")");
             mLastUpdateTV.setText("Last Update :"+lastUpdate);
-            mMinTempTV.setText("Min :"+weather.currentCondition.getTempMin()+"° C");
-            mMaxTempTV.setText("Max :"+weather.currentCondition.getTempMax()+"° C");
+            mMinTempTV.setText("Min :\n"+weather.currentCondition.getTempMin()+"° C");
+            mMaxTempTV.setText("Max :\n"+weather.currentCondition.getTempMax()+"° C");
             mPressureTV.setText("Pressure: "+weather.currentCondition.getPressure()+" hPa");
             mHumidityTV.setText("Humidity: "+weather.currentCondition.getHumidity()+" %");
 
@@ -125,5 +128,20 @@ public class WeatherActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_settings,menu);
+        return true;
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if(itemId == R.id.menu_change_city){
+            Toast.makeText(this,"working correctly",Toast.LENGTH_SHORT).show();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
